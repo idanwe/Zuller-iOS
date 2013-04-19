@@ -9,10 +9,25 @@
 #import "Place.h"
 
 @implementation Place
-@synthesize name, address, phone, minAge, timeDuration, logoUrl, imagesUrl;
+@synthesize _id, name, address, music, phoneNumber, date, logo, minAge, weight;
 
-- (id)init {
-    return nil;
+#pragma mark - Init methods
+
+- (id)initWithDict:(NSDictionary *)jsonDict
+{
+    self = [super init];
+    if (self) {
+        _id = [jsonDict valueForKey:@"_id"];
+        name = [jsonDict valueForKey:@"name"];
+        address = [jsonDict valueForKey:@"address"];
+        music = [jsonDict valueForKey:@"music"];
+        phoneNumber = [jsonDict valueForKey:@"phoneNumber"];
+        date = [jsonDict valueForKey:@"date"];
+        logo = [jsonDict valueForKey:@"logo"];
+        minAge = [[jsonDict valueForKey:@"minAge"] intValue];
+        weight = [[jsonDict valueForKey:@"weight"] intValue];
+    }
+    return self;
 }
 
 @end

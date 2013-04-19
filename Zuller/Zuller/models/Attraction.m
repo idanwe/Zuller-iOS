@@ -9,12 +9,11 @@
 #import "Attraction.h"
 
 @implementation Attraction
-@synthesize name, address, phone, minAge, timeDuration, logoUrl, imagesUrl;
+@synthesize _id, name, address, music, phoneNumber, date, logo, minAge, weight;
 
 - (id)initWithDict:(NSDictionary *)jsonDictionary
 {
-    NSAssert( false, @"Subclass must implement this method" );
-    return nil;
+    [NSException exceptionWithName:@"unimplement method" reason:@"subclass must implement this method" userInfo:nil];
 }
 
 @end

@@ -14,22 +14,22 @@
 
 @implementation AttractionFactory
 
-- (Attraction *)create:(NSString *)responseJSON
+- (Attraction *)create:(NSDictionary *)attractionDict
 {
-    NSString * jsonAsString = responseJSON.copy;
-    NSDictionary * attractionDict = [jsonAsString objectFromJSONString];
-    NSString * attractionType = [attractionDict valueForKey: @"type"];
+    NSArray *typeArray = [attractionDict allKeys]; // give the attractions type e.g. bar
+    NSString *attractionType = [typeArray objectAtIndex:0];
+    NSDictionary *data = [attractionDict valueForKey:attractionType];
     if([attractionType isEqualToString: @"bar"]) {
-        return [[Bar alloc] initWithDict: attractionDict];
+        return [[Bar alloc] initWithDict: data];
     }
     else if([attractionType isEqualToString: @"club"]) {
-        return [[Club alloc] initWithDict: attractionDict];
+        return [[Club alloc] initWithDict: data];
     }
     else if([attractionType isEqualToString: @"line"]) {
-        return [[Line alloc] initWithDict: attractionDict];
+        return [[Line alloc] initWithDict: data];
     }
     else if([attractionType isEqualToString: @"party"]) {
-        return [[Party alloc] initWithDict: attractionDict];
+        return [[Party alloc] initWithDict: data];
     };
 }
 
