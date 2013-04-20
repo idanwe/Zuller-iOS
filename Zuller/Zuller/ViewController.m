@@ -23,7 +23,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    
+
+}
+
+- (IBAction)showZuller:(id)sender
+{
     NSString *response = [self searchRequest];
     NSArray *parsedData = [self parseJSONResponse:response];
     
@@ -34,8 +38,8 @@
         [attractions addObject:attraction];
     }
     NSLog(@"attractions %@", attractions);
-    NSLog(@"finish");
-
+    [clubField setText:[[attractions objectAtIndex:0] valueForKey:@"name"]];
+    [barField setText:[[attractions objectAtIndex:1] valueForKey:@"name"]];
 }
 
 - (NSString *)searchRequest

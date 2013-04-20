@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
-
+{
+    IBOutlet UILabel *barField;
+    IBOutlet UILabel *clubField;
+}
+- (IBAction)showZuller:(id)sender;
 - (NSString *)searchRequest;
-
 - (NSArray *)parseJSONResponse:(NSString *) response;
+
 @end
