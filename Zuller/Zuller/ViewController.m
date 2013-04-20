@@ -28,13 +28,28 @@
 
 - (IBAction)showZuller:(id)sender
 {
-    NSString *response = [self searchRequest];
+    [self searchRequest];
+}
+
+- (void)searchRequest
+{
+    NSURL *url = [NSURL URLWithString:@"http://zuller.herokuapp.com/search"];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    [request setRequestMethod:@"POST"];
+    [request setDelegate:self];
+//    [request setUploadProgressDelegate:myProgressIndicator];
+    [request startSynchronous];
+}
+
+- (void)requestFinished:(ASIHTTPRequest *)request
+{
+    NSString *response = [request responseString];
     NSArray *parsedData = [self parseJSONResponse:response];
     
     AttractionFactory *attractionFactory = [[AttractionFactory alloc] init];
     NSMutableArray * attractions = [[NSMutableArray alloc] init];
     for (NSDictionary *attractionDict in parsedData) {
-        Attraction *attraction = [attractionFactory create:attractionDict];
+        Attraction *attraction = [attractionFactory createAttraction:attractionDict];
         [attractions addObject:attraction];
     }
     NSLog(@"attractions %@", attractions);
@@ -42,21 +57,10 @@
     [barField setText:[[attractions objectAtIndex:1] valueForKey:@"name"]];
 }
 
-- (NSString *)searchRequest
+- (void)requestFailed:(ASIHTTPRequest *)request
 {
-    NSURL *url = [NSURL URLWithString:@"http://zuller.herokuapp.com/search"];
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    [request setRequestMethod:@"POST"];
-    [request startSynchronous];
-    
     NSError *error = [request error];
-    if (!error) {
-       return [request responseString];
-    }
-    else {
-        return @"request fail";
-    }
-
+    NSLog(@"request failed %@", error);
 }
 
 - (NSArray *)parseJSONResponse:(NSString *) response

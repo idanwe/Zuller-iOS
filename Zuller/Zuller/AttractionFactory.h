@@ -12,7 +12,7 @@
 
 @interface AttractionFactory : NSObject
 
-- (Attraction *)create: (NSDictionary *) attractionDict;
+- (Attraction *)createAttraction: (NSDictionary *) attractionDict;
 - (NSString *)_getType: (NSDictionary *)attractionDict;
 
 @end

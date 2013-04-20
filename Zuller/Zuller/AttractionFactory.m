@@ -14,10 +14,11 @@
 
 @implementation AttractionFactory
 
-- (Attraction *)create:(NSDictionary *)attractionDict
+- (Attraction *)createAttraction:(NSDictionary *)attractionDict
 {
     NSString *attractionType = [self _getType:attractionDict];
     NSDictionary *data = [attractionDict valueForKey:attractionType];
+    
     if([attractionType isEqualToString: @"bar"]) {
         return [[Bar alloc] initWithDict: data];
     }

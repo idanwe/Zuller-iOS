@@ -14,7 +14,8 @@
     IBOutlet UILabel *clubField;
 }
 - (IBAction)showZuller:(id)sender;
-- (NSString *)searchRequest;
+
+- (void)searchRequest;
 - (NSArray *)parseJSONResponse:(NSString *) response;
 
 @end
