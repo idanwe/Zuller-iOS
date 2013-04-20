@@ -10,4 +10,7 @@
 
 @interface ViewController : UIViewController
 
+- (NSString *)searchRequest;
+
+- (NSArray *)parseJSONResponse:(NSString *) response;
 @end

@@ -23,33 +23,44 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    NSString *response = [self searchRequest];
+    NSArray *parsedData = [self parseJSONResponse:response];
+    
+    AttractionFactory *attractionFactory = [[AttractionFactory alloc] init];
+    NSMutableArray * attractions = [[NSMutableArray alloc] init];
+    for (NSDictionary *attractionDict in parsedData) {
+        Attraction *attraction = [attractionFactory create:attractionDict];
+        [attractions addObject:attraction];
+    }
+    NSLog(@"attractions %@", attractions);
+    NSLog(@"finish");
 
+}
+
+- (NSString *)searchRequest
+{
     NSURL *url = [NSURL URLWithString:@"http://zuller.herokuapp.com/search"];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     [request setRequestMethod:@"POST"];
     [request startSynchronous];
+    
     NSError *error = [request error];
     if (!error) {
-        NSString *response = [request responseString];
-        NSData *data = [response dataUsingEncoding: NSUTF8StringEncoding];
-        
-        AttractionFactory *attractionFactory = [[AttractionFactory alloc] init];
-        JSONDecoder* decoder = [[JSONDecoder alloc] init];
-        NSArray *deserializedData = [decoder objectWithData:data];
-        NSLog(@"deserializedData -> %@", deserializedData);
-        
-        NSMutableArray * attractions = [[NSMutableArray alloc] init];
-        for (NSDictionary *attractionDict in deserializedData) {
-//            NSLog(@"bar -> %@", attractionDict);
-//            NSDictionary* attractionData = [attractionDict valueForKey:@"bar"];
-//            NSLog(@"bar values -> %@", attractionData);
-//            NSLog(@"bar name -> %@", [attractionData valueForKey:@"name"]);
-            Attraction *attraction = [attractionFactory create:((NSString *)attractionDict)];
-            [attractions addObject:attraction];
-        }
-        NSLog(@"attractions %@", attractions);
-        NSLog(@"finish");
+       return [request responseString];
     }
+    else {
+        return @"request fail";
+    }
+
+}
+
+- (NSArray *)parseJSONResponse:(NSString *) response
+{
+    JSONDecoder* decoder = [[JSONDecoder alloc] init];
+    NSData *data = [response dataUsingEncoding: NSUTF8StringEncoding];
+    NSArray *parsedData = [decoder objectWithData:data];
+    return parsedData;
 }
 
 - (void)didReceiveMemoryWarning

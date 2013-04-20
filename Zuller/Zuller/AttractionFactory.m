@@ -16,8 +16,7 @@
 
 - (Attraction *)create:(NSDictionary *)attractionDict
 {
-    NSArray *typeArray = [attractionDict allKeys]; // give the attractions type e.g. bar
-    NSString *attractionType = [typeArray objectAtIndex:0];
+    NSString *attractionType = [self _getType:attractionDict];
     NSDictionary *data = [attractionDict valueForKey:attractionType];
     if([attractionType isEqualToString: @"bar"]) {
         return [[Bar alloc] initWithDict: data];
@@ -31,6 +30,12 @@
     else if([attractionType isEqualToString: @"party"]) {
         return [[Party alloc] initWithDict: data];
     };
+}
+
+- (NSString *)_getType: (NSDictionary *)attractionDict
+{
+    NSArray *typeArray = [attractionDict allKeys];
+    return [typeArray objectAtIndex:0];
 }
 
 @end

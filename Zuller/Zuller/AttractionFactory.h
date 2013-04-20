@@ -11,5 +11,8 @@
 #import "Attraction.h"
 
 @interface AttractionFactory : NSObject
-    - (Attraction *)create: (NSString *) responseJSON;
+
+- (Attraction *)create: (NSDictionary *) attractionDict;
+- (NSString *)_getType: (NSDictionary *)attractionDict;
+
 @end
