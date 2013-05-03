@@ -12,6 +12,8 @@
 
 @interface NetworkManager : NSObject<ASIHTTPRequestDelegate>
 
++ (void) initialize;
+
 - (void)searchRequest;
 -(void)requestStarted:(ASIHTTPRequest *)request;
 -(void)requestFinished:(ASIHTTPRequest *)request;

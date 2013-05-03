@@ -8,18 +8,28 @@
 
 #import "NetworkManager.h"
 
+#define BASE_URL @"http://zuller.herokuapp.com/"
+#define SEARCH_URL @"search"
+
 @implementation NetworkManager
 
-static const NSString * urlString = @"http://zuller.herokuapp.com/search";
+static NSURL * baseUrl = nil;
+
++ (void) initialize {
+    if (baseUrl == nil)
+        baseUrl = [NSURL URLWithString:BASE_URL];
+}
 
 - (void)searchRequest
 {
-    NSURL *url = [NSURL URLWithString:urlString];
+    NSURL *url = [NSURL URLWithString:SEARCH_URL relativeToURL:baseUrl];
+    
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     [request setRequestMethod:@"POST"];
     [request setDelegate:self];
 //    [request setUploadProgressDelegate:myProgressIndicator];
     [request startAsynchronous];
+    
 }
 
 - (void)requestStarted:(ASIHTTPRequest *) request

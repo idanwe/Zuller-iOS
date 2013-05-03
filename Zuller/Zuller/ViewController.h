@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "ASIHTTPRequest.h"
 #import "MBProgressHUD.h"
-#import "JSONKit.h"
+#import "JSONParser.h"
 #import "NetworkManager.h"
 #import "AttractionFactory.h"
 #import "Attraction.h"
+#import "AttractionsViewController.h"
+
 
 @interface ViewController : UIViewController
 
@@ -21,6 +23,5 @@
 - (IBAction)zullerMyNight:(id)sender;
 
 - (void)onSearchRequestFinished:(ASIHTTPRequest *) request;
-- (NSArray *)parseJSONResponse:(NSString *) response;
 
 @end

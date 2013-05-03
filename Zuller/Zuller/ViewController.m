@@ -18,48 +18,39 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(onSearchRequestFinished:) name:@"searchRequestFinished" object:nil];
+    networkManager = [[NetworkManager alloc] init];
     
 	// Do any additional setup after loading the view, typically from a nib.
-
 }
 
 - (IBAction)zullerMyNight:(id)sender
 {
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self selector:@selector(onSearchRequestFinished:) name:@"searchRequestFinished" object:nil];
-    networkManager = [[NetworkManager alloc] init];
     [networkManager searchRequest];
 }
 
 - (void)onSearchRequestFinished:(NSNotification *) notification
 {
     ASIHTTPRequest *request = (ASIHTTPRequest*)[notification object];
-    
     NSString *response = [request responseString];
-    NSArray *parsedData = [self parseJSONResponse:response];
     
+    NSDictionary *parsedData = [JSONParser parse:response];
+    
+    // create attractions
     AttractionFactory *attractionFactory = [[AttractionFactory alloc] init];
-    NSMutableArray * attractions = [[NSMutableArray alloc] init];
-    for (NSDictionary *attractionDict in parsedData) {
+    NSMutableArray *attractions = [[NSMutableArray alloc] init];
+    for (NSDictionary *attractionDict in [parsedData valueForKey:@"Attractions"]) {
         Attraction *attraction = [attractionFactory createAttraction:attractionDict];
         [attractions addObject:attraction];
     }
     NSLog(@"attractions %@", attractions);
 
-//    ViewController *s = [[ViewController alloc]init];
-//    [navigationController addChildViewController:s];
-//
-//    [self.navigationController pushViewController:ListViewControoler animated:YES]
+    // init attractions view controller and navigate to him
+    AttractionsViewController * attractionsViewController = [[AttractionsViewController alloc] initWithAttractions:attractions];
+    [self.navigationController pushViewController:attractionsViewController animated:YES];
 }
 
-
-- (NSArray *)parseJSONResponse:(NSString *) response
-{
-    JSONDecoder* decoder = [[JSONDecoder alloc] init];
-    NSData *data = [response dataUsingEncoding: NSUTF8StringEncoding];
-    NSArray *parsedData = [decoder objectWithData:data];
-    return parsedData;
-}
 
 - (void)didReceiveMemoryWarning
 {

@@ -24,7 +24,7 @@
     
 //    ViewController *s = [[ViewController alloc]init];
 //    [navigationController addChildViewController:s];
-    navigationController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
+    navigationController = [[UINavigationController alloc] initWithRootViewController: self.viewController];
     
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
