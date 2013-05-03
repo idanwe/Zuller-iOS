@@ -7,16 +7,12 @@
 //
 
 #import "AttractionFactory.h"
-#import "Bar.h"
-#import "Club.h"
-#import "Line.h"
-#import "Party.h"
 
 @implementation AttractionFactory
 
 - (Attraction *)createAttraction:(NSDictionary *)attractionDict
 {
-    NSString *attractionType = [self _getType:attractionDict];
+    NSString *attractionType = [self getType:attractionDict];
     NSDictionary *data = [attractionDict valueForKey:attractionType];
     
     if([attractionType isEqualToString: @"bar"]) {
@@ -33,7 +29,7 @@
     };
 }
 
-- (NSString *)_getType: (NSDictionary *)attractionDict
+- (NSString *)getType: (NSDictionary *)attractionDict
 {
     NSArray *typeArray = [attractionDict allKeys];
     return [typeArray objectAtIndex:0];

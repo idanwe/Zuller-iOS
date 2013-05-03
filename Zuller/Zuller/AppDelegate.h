@@ -11,6 +11,9 @@
 @class ViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+{
+    @private UINavigationController *navigationController;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 

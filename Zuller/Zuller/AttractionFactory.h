@@ -9,10 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "JSONKit.h"
 #import "Attraction.h"
+#import "Bar.h"
+#import "Club.h"
+#import "Line.h"
+#import "Party.h"
+
 
 @interface AttractionFactory : NSObject
 
 - (Attraction *)createAttraction: (NSDictionary *) attractionDict;
-- (NSString *)_getType: (NSDictionary *)attractionDict;
+- (NSString *)getType: (NSDictionary *)attractionDict;
 
 @end

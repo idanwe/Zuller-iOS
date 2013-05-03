@@ -7,42 +7,34 @@
 //
 
 #import "ViewController.h"
-#import "MBProgressHUD.h"
-#import "ASIHTTPRequest.h"
-#import "AttractionFactory.h"
-#import "Attraction.h"
-#import "JSONKit.h"
 
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
+@synthesize networkManager;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 	// Do any additional setup after loading the view, typically from a nib.
 
 }
 
-- (IBAction)showZuller:(id)sender
+- (IBAction)zullerMyNight:(id)sender
 {
-    [self searchRequest];
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(onSearchRequestFinished:) name:@"searchRequestFinished" object:nil];
+    networkManager = [[NetworkManager alloc] init];
+    [networkManager searchRequest];
 }
 
-- (void)searchRequest
+- (void)onSearchRequestFinished:(NSNotification *) notification
 {
-    NSURL *url = [NSURL URLWithString:@"http://zuller.herokuapp.com/search"];
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    [request setRequestMethod:@"POST"];
-    [request setDelegate:self];
-//    [request setUploadProgressDelegate:myProgressIndicator];
-    [request startSynchronous];
-}
-
-- (void)requestFinished:(ASIHTTPRequest *)request
-{
+    ASIHTTPRequest *request = (ASIHTTPRequest*)[notification object];
+    
     NSString *response = [request responseString];
     NSArray *parsedData = [self parseJSONResponse:response];
     
@@ -53,15 +45,13 @@
         [attractions addObject:attraction];
     }
     NSLog(@"attractions %@", attractions);
-    [clubField setText:[[attractions objectAtIndex:0] valueForKey:@"name"]];
-    [barField setText:[[attractions objectAtIndex:1] valueForKey:@"name"]];
+
+//    ViewController *s = [[ViewController alloc]init];
+//    [navigationController addChildViewController:s];
+//
+//    [self.navigationController pushViewController:ListViewControoler animated:YES]
 }
 
-- (void)requestFailed:(ASIHTTPRequest *)request
-{
-    NSError *error = [request error];
-    NSLog(@"request failed %@", error);
-}
 
 - (NSArray *)parseJSONResponse:(NSString *) response
 {

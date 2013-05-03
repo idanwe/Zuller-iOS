@@ -7,15 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ASIHTTPRequest.h"
+#import "MBProgressHUD.h"
+#import "JSONKit.h"
+#import "NetworkManager.h"
+#import "AttractionFactory.h"
+#import "Attraction.h"
 
 @interface ViewController : UIViewController
-{
-    IBOutlet UILabel *barField;
-    IBOutlet UILabel *clubField;
-}
-- (IBAction)showZuller:(id)sender;
 
-- (void)searchRequest;
+@property(strong) NetworkManager * networkManager;
+
+- (IBAction)zullerMyNight:(id)sender;
+
+- (void)onSearchRequestFinished:(ASIHTTPRequest *) request;
 - (NSArray *)parseJSONResponse:(NSString *) response;
 
 @end
