@@ -11,4 +11,8 @@
 
 @interface Place : Attraction
 
+@property(retain, nonatomic) NSDate * openingHours;
+@property(retain, nonatomic) NSString * menu;
+@property(retain, nonatomic) NSDictionary * alcoholPrices;
+
 @end

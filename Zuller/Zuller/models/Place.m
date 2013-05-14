@@ -9,7 +9,7 @@
 #import "Place.h"
 
 @implementation Place
-@synthesize _id, name, address, music, phoneNumber, date, logo, minAge, weight;
+@synthesize _id, name, address, minAge, logo, phoneNumber, music, openingHours, menu, alcoholPrices, weight;
 
 #pragma mark - Init methods
 
@@ -20,11 +20,13 @@
         _id = [jsonDict valueForKey:@"_id"];
         name = [jsonDict valueForKey:@"name"];
         address = [jsonDict valueForKey:@"address"];
-        music = [jsonDict valueForKey:@"music"];
-        phoneNumber = [jsonDict valueForKey:@"phoneNumber"];
-        date = [jsonDict valueForKey:@"date"];
+        minAge = [[jsonDict valueForKey:@"min_age"] intValue];
         logo = [jsonDict valueForKey:@"logo"];
-        minAge = [[jsonDict valueForKey:@"minAge"] intValue];
+        phoneNumber = [jsonDict valueForKey:@"phone_number"];
+        music = [jsonDict valueForKey:@"music"];
+        openingHours = [jsonDict valueForKey:@"opening_hours"];
+        menu = [jsonDict valueForKey:@"menu"];
+        alcoholPrices = [jsonDict valueForKey:@"alcohol_prices"];
         weight = [[jsonDict valueForKey:@"weight"] intValue];
     }
     return self;

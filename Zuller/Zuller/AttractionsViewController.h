@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "Attraction.h"
+#import "DetailAttractionViewController.h"
 
 @interface AttractionsViewController : UITableViewController
 
 @property(retain, nonatomic) NSMutableArray * attractions;
 
-- (id)initWithAttractions:(NSMutableArray *) Attractions;
+- (id)initWithAttractions:(NSMutableArray *)Attractions;
 
 
 @end

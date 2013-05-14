@@ -8,47 +8,31 @@
 
 #import "NetworkManager.h"
 
-#define BASE_URL @"http://zuller.herokuapp.com/"
-#define SEARCH_URL @"search"
+//#define BASE_URL @"http://zuller.herokuapp.com/"
+//#define BASE_URL @"http://localhost:2222/"
+//#define SEARCH_URL @"search"
+
+#define BASE_URL @"http://localhost:3000/"
+//#define BASE_URL @"http://zullerserver.herokuapp.com/"
+#define SEARCH_URL @"home/search.json"
 
 @implementation NetworkManager
 
 static NSURL * baseUrl = nil;
 
-+ (void) initialize {
++ (void)initialize {
     if (baseUrl == nil)
         baseUrl = [NSURL URLWithString:BASE_URL];
 }
 
-- (void)searchRequest
+- (void)searchRequestWithDelegate:(id<ASIHTTPRequestDelegate>)delegate
 {
     NSURL *url = [NSURL URLWithString:SEARCH_URL relativeToURL:baseUrl];
-    
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     [request setRequestMethod:@"POST"];
-    [request setDelegate:self];
+    [request setDelegate:delegate];
 //    [request setUploadProgressDelegate:myProgressIndicator];
     [request startAsynchronous];
-    
 }
 
-- (void)requestStarted:(ASIHTTPRequest *) request
-{
-    NSLog(@"request started");
-}
-
-- (void)requestFinished:(ASIHTTPRequest *)request
-{
-    NSLog(@"requestFinished NetWorkManager");
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc postNotificationName:@"searchRequestFinished" object:request];
-}
-
-- (void)requestFailed:(ASIHTTPRequest *)request
-{
-    NSError *error = [request error];
-    NSLog(@"request failed %@", error);
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc postNotificationName:@"searchRequestFailed" object:request];
-}
 @end

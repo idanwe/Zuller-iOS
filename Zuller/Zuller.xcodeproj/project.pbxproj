@@ -43,6 +43,8 @@
 		871E2B831733F71C0051F2B7 /* AttractionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 871E2B811733F71C0051F2B7 /* AttractionsViewController.m */; };
 		871E2B841733F71C0051F2B7 /* AttractionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 871E2B821733F71C0051F2B7 /* AttractionsViewController.xib */; };
 		871E2B8717346AD30051F2B7 /* JSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 871E2B8617346AD20051F2B7 /* JSONParser.m */; };
+		871E2B8C17357A270051F2B7 /* DetailAttractionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 871E2B8A17357A270051F2B7 /* DetailAttractionViewController.m */; };
+		871E2B8D17357A270051F2B7 /* DetailAttractionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 871E2B8B17357A270051F2B7 /* DetailAttractionViewController.xib */; };
 		8725FC26171C2DDA0010E42F /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8725FC25171C2DDA0010E42F /* libxml2.dylib */; };
 		872B7824171C381A00CCDDA3 /* .gitattributes in Resources */ = {isa = PBXBuildFile; fileRef = 872B781C171C381A00CCDDA3 /* .gitattributes */; };
 		872B7825171C381A00CCDDA3 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 872B781D171C381A00CCDDA3 /* .gitignore */; };
@@ -168,6 +170,9 @@
 		871E2B821733F71C0051F2B7 /* AttractionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttractionsViewController.xib; sourceTree = "<group>"; };
 		871E2B8517346AD20051F2B7 /* JSONParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONParser.h; sourceTree = "<group>"; };
 		871E2B8617346AD20051F2B7 /* JSONParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONParser.m; sourceTree = "<group>"; };
+		871E2B8917357A270051F2B7 /* DetailAttractionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailAttractionViewController.h; sourceTree = "<group>"; };
+		871E2B8A17357A270051F2B7 /* DetailAttractionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailAttractionViewController.m; sourceTree = "<group>"; };
+		871E2B8B17357A270051F2B7 /* DetailAttractionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailAttractionViewController.xib; sourceTree = "<group>"; };
 		8725FC25171C2DDA0010E42F /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		872B781C171C381A00CCDDA3 /* .gitattributes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
 		872B781D171C381A00CCDDA3 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -405,13 +410,23 @@
 			children = (
 				8745B2E7171B19920026321B /* ViewController.h */,
 				8745B2E8171B19920026321B /* ViewController.m */,
-				8745B2EA171B19920026321B /* ViewController_iPhone.xib */,
-				8745B2ED171B19920026321B /* ViewController_iPad.xib */,
 				871E2B801733F71C0051F2B7 /* AttractionsViewController.h */,
 				871E2B811733F71C0051F2B7 /* AttractionsViewController.m */,
-				871E2B821733F71C0051F2B7 /* AttractionsViewController.xib */,
+				871E2B8917357A270051F2B7 /* DetailAttractionViewController.h */,
+				871E2B8A17357A270051F2B7 /* DetailAttractionViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		871E2B88173472B00051F2B7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8745B2EA171B19920026321B /* ViewController_iPhone.xib */,
+				8745B2ED171B19920026321B /* ViewController_iPad.xib */,
+				871E2B821733F71C0051F2B7 /* AttractionsViewController.xib */,
+				871E2B8B17357A270051F2B7 /* DetailAttractionViewController.xib */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		872B781B171C381A00CCDDA3 /* MBProgressHUD-master */ = {
@@ -478,10 +493,11 @@
 				87B759611723243000EFB65C /* NetworkManager.m */,
 				871E2B8517346AD20051F2B7 /* JSONParser.h */,
 				871E2B8617346AD20051F2B7 /* JSONParser.m */,
+				871E2B88173472B00051F2B7 /* Views */,
 				871E2B7F1733F4850051F2B7 /* Controllers */,
+				8745B31C171C23950026321B /* Models */,
 				8745B32F171C29350026321B /* Vendor */,
 				8745B2D6171B19920026321B /* Supporting Files */,
-				8745B31C171C23950026321B /* Models */,
 			);
 			path = Zuller;
 			sourceTree = "<group>";
@@ -678,6 +694,7 @@
 				871E2B7B1733D0080051F2B7 /* README.textile in Resources */,
 				871E2B7C1733D0080051F2B7 /* strict.xcconfig in Resources */,
 				871E2B841733F71C0051F2B7 /* AttractionsViewController.xib in Resources */,
+				871E2B8D17357A270051F2B7 /* DetailAttractionViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -753,6 +770,7 @@
 				871E2B791733D0080051F2B7 /* Reachability.m in Sources */,
 				871E2B831733F71C0051F2B7 /* AttractionsViewController.m in Sources */,
 				871E2B8717346AD30051F2B7 /* JSONParser.m in Sources */,
+				871E2B8C17357A270051F2B7 /* DetailAttractionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

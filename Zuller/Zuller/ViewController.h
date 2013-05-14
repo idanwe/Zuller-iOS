@@ -15,13 +15,10 @@
 #import "Attraction.h"
 #import "AttractionsViewController.h"
 
-
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <ASIHTTPRequestDelegate>
 
 @property(strong) NetworkManager * networkManager;
 
 - (IBAction)zullerMyNight:(id)sender;
-
-- (void)onSearchRequestFinished:(ASIHTTPRequest *) request;
 
 @end

@@ -18,25 +18,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self selector:@selector(onSearchRequestFinished:) name:@"searchRequestFinished" object:nil];
     networkManager = [[NetworkManager alloc] init];
-    
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (IBAction)zullerMyNight:(id)sender
 {
-    [networkManager searchRequest];
+    [networkManager searchRequestWithDelegate:self];
 }
 
-- (void)onSearchRequestFinished:(NSNotification *) notification
+- (void)requestFinished:(ASIHTTPRequest *)request
 {
-    ASIHTTPRequest *request = (ASIHTTPRequest*)[notification object];
     NSString *response = [request responseString];
-    
     NSDictionary *parsedData = [JSONParser parse:response];
-    
+    NSLog(@"parsedData %@", parsedData);
     // create attractions
     AttractionFactory *attractionFactory = [[AttractionFactory alloc] init];
     NSMutableArray *attractions = [[NSMutableArray alloc] init];
@@ -45,10 +40,18 @@
         [attractions addObject:attraction];
     }
     NSLog(@"attractions %@", attractions);
-
+    
     // init attractions view controller and navigate to him
     AttractionsViewController * attractionsViewController = [[AttractionsViewController alloc] initWithAttractions:attractions];
     [self.navigationController pushViewController:attractionsViewController animated:YES];
+}
+
+- (void)requestStarted:(ASIHTTPRequest *)request
+{
+}
+
+- (void)requestFailed:(ASIHTTPRequest *)request
+{
 }
 
 

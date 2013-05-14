@@ -15,21 +15,21 @@
     NSString *attractionType = [self getType:attractionDict];
     NSDictionary *data = [attractionDict valueForKey:attractionType];
     
-    if([attractionType isEqualToString: @"bar"]) {
+    if([attractionType isEqualToString: @"Bar"]) {
         return [[Bar alloc] initWithDict: data];
     }
-    else if([attractionType isEqualToString: @"club"]) {
+    else if([attractionType isEqualToString: @"Club"]) {
         return [[Club alloc] initWithDict: data];
     }
-    else if([attractionType isEqualToString: @"line"]) {
+    else if([attractionType isEqualToString: @"Line"]) {
         return [[Line alloc] initWithDict: data];
     }
-    else if([attractionType isEqualToString: @"party"]) {
+    else if([attractionType isEqualToString: @"Party"]) {
         return [[Party alloc] initWithDict: data];
     };
 }
 
-- (NSString *)getType: (NSDictionary *)attractionDict
+- (NSString *)getType:(NSDictionary *)attractionDict
 {
     NSArray *typeArray = [attractionDict allKeys];
     return [typeArray objectAtIndex:0];

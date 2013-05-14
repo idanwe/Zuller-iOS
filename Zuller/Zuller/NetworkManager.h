@@ -10,12 +10,10 @@
 #import "ASIFormDataRequest.h"
 #import "ASIHTTPRequest.h"
 
-@interface NetworkManager : NSObject<ASIHTTPRequestDelegate>
+@interface NetworkManager : NSObject //<ASIHTTPRequestDelegate>
 
-+ (void) initialize;
++ (void)initialize;
 
-- (void)searchRequest;
--(void)requestStarted:(ASIHTTPRequest *)request;
--(void)requestFinished:(ASIHTTPRequest *)request;
+- (void)searchRequestWithDelegate:(id<ASIHTTPRequestDelegate>)delegate;
 
 @end

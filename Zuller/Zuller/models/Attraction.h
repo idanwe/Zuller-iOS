@@ -14,11 +14,10 @@
 @property(retain, nonatomic) NSString * _id;
 @property(retain, nonatomic) NSString * name;
 @property(retain, nonatomic) NSString * address;
-@property(retain, nonatomic) NSString * music;
-@property(retain, nonatomic) NSString * phoneNumber;
-@property(retain, nonatomic) NSDate * date;
-@property(retain, nonatomic) NSString * logo;
 @property int minAge;
+@property(retain, nonatomic) NSString * logo;
+@property(retain, nonatomic) NSString * phoneNumber;
+@property(retain, nonatomic) NSString * music;
 @property int weight;
 
 @end
