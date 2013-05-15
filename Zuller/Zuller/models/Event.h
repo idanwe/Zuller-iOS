@@ -11,4 +11,7 @@
 
 @interface Event : Attraction
 
+//Hosts<Place>
+//Duration - DateRange
+
 @end

@@ -7,16 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FacebookSDK/FacebookSDK.h>
 
 @class ViewController;
-
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
-{
-    @private UINavigationController *navigationController;
-}
+
+- (void)showLoginView;
+- (void)openSession;
+
+@property (strong, nonatomic) UINavigationController *navigationController;
 
 @property (strong, nonatomic) UIWindow *window;
 
+//@property (strong, nonatomic) ViewController *viewController;
 @property (strong, nonatomic) ViewController *viewController;
+
 
 @end

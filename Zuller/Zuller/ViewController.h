@@ -14,6 +14,7 @@
 #import "AttractionFactory.h"
 #import "Attraction.h"
 #import "AttractionsViewController.h"
+#import <FacebookSDK/FacebookSDK.h>
 
 @interface ViewController : UIViewController <ASIHTTPRequestDelegate>
 
