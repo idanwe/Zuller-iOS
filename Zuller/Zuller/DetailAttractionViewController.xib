@@ -49,9 +49,8 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">יא אללה איזה יופי</string>
 						<object class="NSColor" key="IBUITextColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MCAwIDAAA</bytes>
-							<string key="IBUIColorCocoaTouchKeyPath">darkTextColor</string>
+							<int key="NSColorSpace">2</int>
+							<bytes key="NSRGB">MC45OTIxNTY5MjI4IDAuNjk0MTE3NjY1MyAwLjAwNzg0MzEzNzcxOQA</bytes>
 						</object>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
@@ -80,8 +79,8 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">Label</string>
 						<object class="NSColor" key="IBUITextColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MCAwLjUwMTk2MDgxNCAxAA</bytes>
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MQA</bytes>
 						</object>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
@@ -105,11 +104,8 @@
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="494341276"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">3</int>
-					<bytes key="NSWhite">MQA</bytes>
-					<object class="NSColorSpace" key="NSCustomColorSpace">
-						<int key="NSID">2</int>
-					</object>
+					<int key="NSColorSpace">1</int>
+					<bytes key="NSRGB">MC4wMTMwNTczMTQ3NCAwLjEzMzk3MTIwNDIgMC4zMTk1MTUzMDYxAA</bytes>
 				</object>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 				<object class="IBUIScreenMetrics" key="IBUISimulatedDestinationMetrics">

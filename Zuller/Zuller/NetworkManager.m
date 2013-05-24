@@ -14,7 +14,7 @@
 
 //#define BASE_URL @"http://localhost:3000/"
 #define BASE_URL @"http://zullerserver.herokuapp.com/"
-#define SEARCH_URL @"home/search.json"
+#define SEARCH_URL @"api/search.json"
 
 @implementation NetworkManager
 

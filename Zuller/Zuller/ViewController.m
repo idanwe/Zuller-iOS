@@ -9,11 +9,11 @@
 #import "ViewController.h"
 
 @interface ViewController ()
-
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @end
 
 @implementation ViewController
-@synthesize networkManager;
+@synthesize networkManager, spinner;
 
 - (void)viewDidLoad
 {
@@ -31,10 +31,12 @@
 - (IBAction)zullerMyNight:(id)sender
 {
     [networkManager searchRequestWithDelegate:self];
+    [self.spinner startAnimating];
 }
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
+    [self.spinner stopAnimating];
     NSString *response = [request responseString];
     NSDictionary *parsedData = [JSONParser parse:response];
     NSLog(@"parsedData %@", parsedData);
