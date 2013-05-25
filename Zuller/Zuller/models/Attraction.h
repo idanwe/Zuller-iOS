@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "IParsable.h"
 
-@interface Attraction : NSObject <IParsable>
+@interface Attraction : NSObject
 
 @property(retain, nonatomic) NSString * _id;
 @property(retain, nonatomic) NSString * name;
@@ -19,5 +18,7 @@
 @property(retain, nonatomic) NSString * phoneNumber;
 @property(retain, nonatomic) NSString * music;
 @property int weight;
+
+- (id)initWithDict:(NSDictionary *)jsonDictionary;
 
 @end

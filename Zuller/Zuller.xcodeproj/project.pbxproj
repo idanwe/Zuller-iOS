@@ -201,7 +201,6 @@
 		872B796E171C42A800CCDDA3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		872B7970171C4ADA00CCDDA3 /* AttractionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttractionFactory.h; sourceTree = "<group>"; };
 		872B7971171C4ADA00CCDDA3 /* AttractionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttractionFactory.m; sourceTree = "<group>"; };
-		872B7973171C4B3F00CCDDA3 /* IParsable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IParsable.h; path = models/IParsable.h; sourceTree = "<group>"; };
 		8745B2CC171B19920026321B /* Zuller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zuller.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8745B2CF171B19920026321B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8745B2D1171B19920026321B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -584,7 +583,6 @@
 		8745B31C171C23950026321B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				872B7973171C4B3F00CCDDA3 /* IParsable.h */,
 				8745B30D171C22AE0026321B /* Attraction.h */,
 				8745B30E171C22AE0026321B /* Attraction.m */,
 				8745B310171C231F0026321B /* Place.h */,
