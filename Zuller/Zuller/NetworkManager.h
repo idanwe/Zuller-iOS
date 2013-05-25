@@ -14,7 +14,7 @@
 
 + (void)initialize;
 
--(ASIFormDataRequest*)createPostRequestWithUrl:(NSString*)url info:(NSDictionary *)postDictionary andDelegate:(id<ASIHTTPRequestDelegate>)delegate;
+-(ASIFormDataRequest*)createPostRequestWithUrl:(NSURL*)url info:(NSDictionary *)postDictionary andDelegate:(id<ASIHTTPRequestDelegate>)delegate;
 - (void)searchRequestWithDelegate:(id<ASIHTTPRequestDelegate>)delegate;
 -(void)updateServer:(NSString *)updateUrl WithUserInformation:(NSDictionary *)userInformation andDelegate:(id<ASIHTTPRequestDelegate>)delegate;
 

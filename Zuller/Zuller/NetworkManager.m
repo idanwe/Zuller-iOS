@@ -24,10 +24,10 @@ static NSURL * baseUrl = nil;
 }
 
 
--(ASIHTTPRequest*)createPostRequestWithUrl:(NSString*)url info:(NSDictionary *)postDictionary andDelegate:(id<ASIHTTPRequestDelegate>)delegate
+-(ASIHTTPRequest*)createPostRequestWithUrl:(NSURL*)url info:(NSDictionary *)postDictionary andDelegate:(id<ASIHTTPRequestDelegate>)delegate
 {
 	ASIFormDataRequest *postRequest = [ASIFormDataRequest requestWithURL:url];
-    [postRequest setDelegate:delegate]
+    [postRequest setDelegate:delegate];
     for(id postKey in postDictionary)
      {
 		[postRequest setPostValue:[postDictionary objectForKey:postKey] forKey:postKey];
@@ -54,8 +54,8 @@ static NSURL * baseUrl = nil;
 
 -(void)updateServer:(NSString *)updateUrl WithUserInformation:(NSDictionary *)userInformation andDelegate:(id<ASIHTTPRequestDelegate>)delegate
 {
-	NSURL *updateUrl = [NSURL URLWithString:updateUrl relativeToURL:baseUrl];
-    ASIHTTPRequest *updateRequest = [self createPostRequestWithUrl:updateUrl info:userInformation andDelegate:delegate];
+	NSURL *updateRequestUrl = [NSURL URLWithString:updateUrl relativeToURL:baseUrl];
+    ASIHTTPRequest *updateRequest = [self createPostRequestWithUrl:updateRequestUrl info:userInformation andDelegate:delegate];
     [updateRequest startAsynchronous];
 }
 
