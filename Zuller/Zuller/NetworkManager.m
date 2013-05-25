@@ -8,10 +8,6 @@
 
 #import "NetworkManager.h"
 
-//#define BASE_URL @"http://zuller.herokuapp.com/"
-//#define BASE_URL @"http://localhost:2222/"
-//#define SEARCH_URL @"search"
-
 //#define BASE_URL @"http://localhost:3000/"
 #define BASE_URL @"http://zullerserver.herokuapp.com/"
 #define SEARCH_URL @"api/search.json"
