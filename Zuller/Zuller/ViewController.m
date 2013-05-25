@@ -72,4 +72,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+//TEST image chooser
+-(IBAction)goToImageChooser:(id)sender
+{
+     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        ImageChooserViewController * imageChooserVC = [[ImageChooserViewController alloc]initWithCategoryName:@"Music" andNumberToTitleDictionary:[appDelegate.userPreferncesDictionary objectForKey:@"Music"]];
+    [imageChooserVC setImageChooserDelegate:appDelegate];
+    [self.navigationController pushViewController:imageChooserVC animated:YES];
+}
+
 @end

@@ -12,10 +12,19 @@
 #import "FBLoginViewController.h"
 
 @implementation AppDelegate
-@synthesize navigationController, viewController;
+@synthesize navigationController, viewController, audioPlayer,userPreferncesDictionary;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //Media player
+    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"NoLight" ofType:@"mp3"];
+    NSURL *soundFileURL = [NSURL fileURLWithPath:soundFilePath];
+    audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundFileURL error:nil];
+    audioPlayer.numberOfLoops = 1; //infinite
+    audioPlayer.currentTime = 10;
+    [audioPlayer play];
+    
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
@@ -36,6 +45,8 @@
     } else {
         [self showLoginView];
     }
+    
+    [self initUserPreferencesDictionaries];
 
     return YES;
 }
@@ -71,6 +82,10 @@
     [FBSession.activeSession handleDidBecomeActive];
 }
 
+
+#pragma mark -
+#pragma mark - Facebook Delegate
+
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
@@ -78,6 +93,7 @@
 {
     return [FBSession.activeSession handleOpenURL:url];
 }
+
 
 - (void)showLoginView
 {
@@ -144,6 +160,73 @@
      ^(FBSession *session, FBSessionState state, NSError *error) {
          [self sessionStateChanged:session state:state error:error];
      }];
+}
+#pragma mark - 
+#pragma mark - Private methods
+-(void)initUserPreferencesDictionaries
+{
+    NSMutableDictionary * musicDictionary = [[NSMutableDictionary alloc]init];
+    [musicDictionary setObject:@"אלטרנטיבי" forKey:@"1"];
+    [musicDictionary setObject:@"פופ" forKey:@"2"];
+    [musicDictionary setObject:@"רוק מתקדם" forKey:@"3"];
+    [musicDictionary setObject:@"מזרחית" forKey:@"4"];
+    [musicDictionary setObject:@"טראנס" forKey:@"5"];
+    
+    NSMutableDictionary* ageDictionary = [[NSMutableDictionary alloc]init];
+    [ageDictionary setObject:@"18-19" forKey:@"1"];
+    [ageDictionary setObject:@"20-21" forKey:@"2"];
+    [ageDictionary setObject:@"22-23" forKey:@"3"];
+    [ageDictionary setObject:@"24-25" forKey:@"4"];
+    [ageDictionary setObject:@"25+" forKey:@"5"];
+    
+    NSMutableDictionary* locationDictionary = [[NSMutableDictionary alloc]init];
+    [locationDictionary setObject:@"18-19" forKey:@"1"];
+    [locationDictionary setObject:@"20-21" forKey:@"2"];
+    [locationDictionary setObject:@"22-23" forKey:@"3"];
+    [locationDictionary setObject:@"24-25" forKey:@"4"];
+    [locationDictionary setObject:@"25+" forKey:@"5"];
+    
+    NSMutableDictionary* specificLocationDictionary = [[NSMutableDictionary alloc]init];
+    [specificLocationDictionary setObject:@"18-19" forKey:@"1"];
+    [specificLocationDictionary setObject:@"20-21" forKey:@"2"];
+    [specificLocationDictionary setObject:@"22-23" forKey:@"3"];
+    [specificLocationDictionary setObject:@"24-25" forKey:@"4"];
+    [specificLocationDictionary setObject:@"25+" forKey:@"5"];
+    
+    userPreferncesDictionary = [[NSMutableDictionary alloc]init];
+    [userPreferncesDictionary setObject:musicDictionary forKey:@"Music"];
+    [userPreferncesDictionary setObject:ageDictionary forKey:@"Age"];
+    [userPreferncesDictionary setObject:locationDictionary forKey:@"Location"];
+    [userPreferncesDictionary setObject:locationDictionary forKey:@"Specific Location"];
+    
+    
+}
+#pragma mark - 
+#pragma mark - ImageChooser Delegate
+-(void)imageChooserClickedLastButton:(ImageChooserViewController *)viewController
+{
+    NSString * categoryName = viewController.viewCategoryName;
+    
+    if ([categoryName isEqualToString:@"Music"])
+    {
+        NSLog(@"Moved To age");
+        ImageChooserViewController * imageChooserVC = [[ImageChooserViewController alloc]initWithCategoryName:@"Age" andNumberToTitleDictionary:[userPreferncesDictionary objectForKey:@"Age"]];
+        [imageChooserVC setImageChooserDelegate:self];
+        [self.navigationController pushViewController:imageChooserVC animated:YES];
+    }
+    else if ([categoryName isEqualToString:@"Age"])
+    {
+        NSLog(@"Moved To Location");
+    }
+    else if ([categoryName isEqualToString:@"Location"])
+    {
+        NSLog(@"Moved To Specific Location");
+    }
+    else if ([categoryName isEqualToString:@"Specifc Location"])
+    {
+        NSLog(@"Moved To App main");
+    }
+    
 }
 
 @end

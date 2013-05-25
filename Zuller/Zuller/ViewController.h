@@ -14,12 +14,15 @@
 #import "AttractionFactory.h"
 #import "Attraction.h"
 #import "AttractionsViewController.h"
+#import "ImageChooserViewController.h"
 #import <FacebookSDK/FacebookSDK.h>
+
+#import "AppDelegate.h"
 
 @interface ViewController : UIViewController <ASIHTTPRequestDelegate>
 
 @property(strong) NetworkManager * networkManager;
 
 - (IBAction)zullerMyNight:(id)sender;
-
+-(IBAction)goToImageChooser:(id)sender;
 @end
