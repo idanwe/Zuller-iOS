@@ -26,8 +26,12 @@
 
 - (id)initWithAttraction:(Attraction *)attractionData
 {
-    attraction = attractionData;
-    
+    self = [super init];
+    if (self){
+        attraction = attractionData;    
+        [self InitializeGUI];
+    }
+       
     return self;
 }
 
@@ -43,6 +47,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)InitializeGUI
+{
+     //Insert all bla bla button text 
 }
 
 @end

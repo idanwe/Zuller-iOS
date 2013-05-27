@@ -16,5 +16,6 @@
 @property(retain, nonatomic) Attraction * attraction;
 
 - (id)initWithAttraction:(Attraction *)attractionData;
+-(void)InitializeGUI;
 
 @end
